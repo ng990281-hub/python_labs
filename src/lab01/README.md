@@ -101,6 +101,7 @@ ans=s[i]
 for c in range(j+1,t,k):
     ans+=s[c]
 print(f'out : {ans}.')
+```
     
 ![](../../images/lab01/07_ex.png)
 
