@@ -1,7 +1,7 @@
- ### ЛР2 — Коллекции и матрицы (list/tuple/set/dict)
+ ## ЛР2 — Коллекции и матрицы (list/tuple/set/dict)
  ## Задача 1-arrays
  ---
-## 1.Функция min_max
+### 1.Функция min_max
 Возвращаю ошибку, если список пустой. Нахожу минимальный и маскимальный элемент в цикле и возвращаю кортеж из них.
  ```python
 def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
@@ -23,7 +23,7 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
 ![](../../images/lab02/arrays_minmax.png)
 
 ---
-## 2.Функция unique_sorted
+### 2.Функция unique_sorted
 Создаю множество из списка. С помощью пузырьковой сортировки получаю из множетсва отсортированный список.
 ```python
 def unique_sorted(nums: list[float | int]) -> list[float | int]:
@@ -43,7 +43,7 @@ def unique_sorted(nums: list[float | int]) -> list[float | int]:
 ![](../../images/lab02/arrays_unique_sorted.png)
 
 ---
-## 3.Функция flatten
+### 3.Функция flatten
 Проверяю является ли списком или кортежом входные данные. Далее объединяю все в один список.
 ```python
 def flatten(mat: list[list | tuple]) -> list:
@@ -60,7 +60,7 @@ def flatten(mat: list[list | tuple]) -> list:
 ```
 ![](../../images/lab02/arrays_flatten.png)
 ---
-### Задание 2-matrix
+## Задание 2-matrix
 
 ### Функция для проверки прямоугольности матрицы
 ```python
@@ -73,7 +73,7 @@ def check_prmat(mat: list[list[float | int]]):
 ```
 
 ---
-## 1.Функция transpose
+### 1.Функция transpose
 Проверяю на прямоугольность матрицу. Далее создаю новую  матрицу,заполненную 0, которая уже является транспанированной. Потом в двойном цикле заполняю новую матрицу значениями, меняя местами порядок строки и столбца.
 ```python
 def transpose(mat: list[list[float | int]]) -> list[list]:
@@ -88,7 +88,7 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
 ```
 ![](../../images/lab02/matrix_transpose.png)
 ---
-## 2.Функция row_sums
+### 2.Функция row_sums
 Проверяется на прямоугольность матрицы. Далее создаю список размера входной матрицы. В цикле находим сумму каждой строки и добавляем ее в новый список.
 ```python
 def row_sums(mat: list[list[float | int]]) -> list[float]:
@@ -105,7 +105,7 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
 ```
 ![](../../images/lab02/matrix_rowsum.png)
 ---
-## 3.Функция col_sums
+### 3.Функция col_sums
 Проверяется на прямоугольность матрицы. Далее создаю список размера строки входной матрицы. В цикле находим сумму каждого столбца и добавляем ее в новый список.
 ```python
 def col_sums(mat: list[list[float | int]]) -> list[float]:
@@ -122,7 +122,7 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
 ```
 ![](../../images/lab02/matrix_colsum.png)
 ---
-### Задание 3-tuple
+## Задание 3-tuple
 Разбиваю кортеж на три переменные и удаляю лишние пробелы. Проверяется корректность записи ФИО, группы и GPA. Далле в завиимости от длины ФИО разбиваю на переменные и с помощью upper() создаю f строку.Возвращаю полностью f строку.
 ```python
 def format_record(rec: tuple[str, str, float]) -> str:
