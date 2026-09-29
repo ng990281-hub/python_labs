@@ -20,7 +20,7 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
     return (mn,mx)
 
 ```
-![](../../images\lab02\arrays_minmax.png)
+![](../../images/lab02/arrays_minmax.png)
 
 ---
 ## 2.Функция unique_sorted
@@ -40,7 +40,7 @@ def unique_sorted(nums: list[float | int]) -> list[float | int]:
 
 
 ```
-![](../../images\lab02\arrays_unique_sorted.png)
+![](../../images/lab02/arrays_unique_sorted.png)
 
 ---
 ## 3.Функция flatten
@@ -58,7 +58,7 @@ def flatten(mat: list[list | tuple]) -> list:
             raise TypeError("Строка должна являться или списком или кортежом")
     return a
 ```
-![](../../images\lab02\arrays_flatten.png)
+![](../../images/lab02/arrays_flatten.png)
 ---
 ### Задание 2-matrix
 
@@ -86,7 +86,7 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
             mat2[j][i]=mat[i][j]
     return mat2
 ```
-![](../../images\lab02\matrix_transpose.png)
+![](../../images/lab02/matrix_transpose.png)
 ---
 ## 2.Функция row_sums
 Проверяется на прямоугольность матрицы. Далее создаю список размера входной матрицы. В цикле находим сумму каждой строки и добавляем ее в новый список.
@@ -103,7 +103,7 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
         mat2[i]=row
     return mat2
 ```
-![](../../images\lab02\matrix_rowsum.png)
+![](../../images/lab02/matrix_rowsum.png)
 ---
 ## 3.Функция col_sums
 Проверяется на прямоугольность матрицы. Далее создаю список размера строки входной матрицы. В цикле находим сумму каждого столбца и добавляем ее в новый список.
@@ -120,7 +120,7 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
         mat2[i]=col
     return mat2
 ```
-![](../../images\lab02\matrix_colsum.png)
+![](../../images/lab02/matrix_colsum.png)
 ---
 ### Задание 3-tuple
 Разбиваю кортеж на три переменные и удаляю лишние пробелы. Проверяется корректность записи ФИО, группы и GPA. Далле в завиимости от длины ФИО разбиваю на переменные и с помощью upper() создаю f строку.Возвращаю полностью f строку.
@@ -153,4 +153,4 @@ def format_record(rec: tuple[str, str, float]) -> str:
         n_ot=f'{n[0]}.,'
     return f'{s[0].upper()}{s[1:]} {n_ot} гр. {group}, GPA {gpa:.2f}'
 ```
-![](../../images\lab02\tuple.png)
+![](../../images/lab02/tuple.png)
