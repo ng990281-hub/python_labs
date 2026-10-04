@@ -2,6 +2,8 @@ def check_prmat(mat: list[list[float | int]]):
     for i in range(len(mat)):
         if len(mat[i])!=len(mat[0]):
             return False
+        if type(mat[i])!=list:
+         raise TypeError("Строка должна являться списком")
     return True
 
 def transpose(mat: list[list[float | int]]) -> list[list]:

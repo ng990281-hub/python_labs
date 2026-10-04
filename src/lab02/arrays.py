@@ -6,6 +6,8 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
     mx=-10**9
     if len(nums)==0:
         raise ValueError("Список пустой")
+    if type(i)!=list:
+         raise TypeError("Строка должна являться списком")
     for i in nums:
         if i<mn:
             mn=i
@@ -16,6 +18,8 @@ def unique_sorted(nums: list[float | int]) -> list[float | int]:
     """
     This function takes a list of numbers (integers or floats) and sorts it
     """
+    if type(i)!=list:
+         raise TypeError("Строка должна являться списком")
     m=set(nums)
     m=list(m)
     for i in range(len(m)):
@@ -29,7 +33,7 @@ def flatten(mat: list[list | tuple]) -> list:
     """
     a=[]
     for i in mat:
-        if i==list(i) or i==tuple(i):
+        if type(i)==list or type(i)==tuple:
             a+=i
         else:
             raise TypeError("Строка должна являться или списком или кортежом")

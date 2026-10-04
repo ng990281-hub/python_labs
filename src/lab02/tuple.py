@@ -1,21 +1,21 @@
 def format_record(rec: tuple[str, str, float]) -> str:
-    if rec!=tuple(rec):
+    if tuple!=type(rec):
         raise TypeError("Запись должна быть кортежом")
     if len(rec)!=3:
         raise ValueError("В записи должно быть 3 элемента")
     fio=rec[0].strip()
     group=rec[1].strip()
     gpa=rec[2]
-    if str(fio)!=fio:
+    if type(fio)!=str:
         raise TypeError("ФИО должно быть строкой")
     if len(fio.split())<2  or 3<len(fio.split()): 
         raise ValueError("Некорректное ФИО")
-    if str(group)!=group:
+    if type(group)!=str:
         raise TypeError("Группа должна быть строкой")
     if len(group.split())==0:
         raise ValueError("Группа пустая")
-    if gpa!=float(gpa):
-        raise  TypeError("GPA должно быть вещественным числом")
+    if type(gpa)!=float and type(gpa)!=int:
+        raise  TypeError("GPA должно быть числом")
     if  0>gpa or gpa>5:
         raise ValueError("Некорректное GPA")
     if len(fio.split())==3:
