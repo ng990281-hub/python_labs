@@ -1,13 +1,15 @@
- ## ЛР2 — Коллекции и матрицы (list/tuple/set/dict)
+ ### ЛР2 — Коллекции и матрицы (list/tuple/set/dict)
  ## Задача 1-arrays
- 
-### 1.Функция min_max
+ ---
+## 1.Функция min_max
 Возвращаю ошибку, если список пустой. Нахожу минимальный и маскимальный элемент в цикле и возвращаю кортеж из них.
  ```python
 def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
     """
     This function takes list and return pair (min, max) of the list
     """
+    if type(nums)!=list:
+         raise TypeError("Строка должна являться списком")
     mn=10**9
     mx=-10**9
     if len(nums)==0:
@@ -23,13 +25,15 @@ def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
 ![](../../images/lab02/arrays_minmax.png)
 
 ---
-### 2.Функция unique_sorted
+## 2.Функция unique_sorted
 Создаю множество из списка. С помощью пузырьковой сортировки получаю из множетсва отсортированный список.
 ```python
 def unique_sorted(nums: list[float | int]) -> list[float | int]:
     """
     This function takes a list of numbers (integers or floats) and sorts it
     """
+    if type(nums)!=list:
+         raise TypeError("Строка должна являться списком")
     m=set(nums)
     m=list(m)
     for i in range(len(m)):
@@ -43,7 +47,7 @@ def unique_sorted(nums: list[float | int]) -> list[float | int]:
 ![](../../images/lab02/arrays_unique_sorted.png)
 
 ---
-### 3.Функция flatten
+## 3.Функция flatten
 Проверяю является ли списком или кортежом входные данные. Далее объединяю все в один список.
 ```python
 def flatten(mat: list[list | tuple]) -> list:
@@ -52,7 +56,7 @@ def flatten(mat: list[list | tuple]) -> list:
     """
     a=[]
     for i in mat:
-        if i==list(i) or i==tuple(i):
+        if type(i)==list or type(i)==tuple:
             a+=i
         else:
             raise TypeError("Строка должна являться или списком или кортежом")
@@ -60,7 +64,7 @@ def flatten(mat: list[list | tuple]) -> list:
 ```
 ![](../../images/lab02/arrays_flatten.png)
 ---
-## Задание 2-matrix
+### Задание 2-matrix
 
 ### Функция для проверки прямоугольности матрицы
 ```python
@@ -68,12 +72,14 @@ def check_prmat(mat: list[list[float | int]]):
     for i in range(len(mat)):
         if len(mat[i])!=len(mat[0]):
             return False
+        if type(mat[i])!=list:
+         raise TypeError("Строка должна являться списком")
     return True
 
 ```
 
 ---
-### 1.Функция transpose
+## 1.Функция transpose
 Проверяю на прямоугольность матрицу. Далее создаю новую  матрицу,заполненную 0, которая уже является транспанированной. Потом в двойном цикле заполняю новую матрицу значениями, меняя местами порядок строки и столбца.
 ```python
 def transpose(mat: list[list[float | int]]) -> list[list]:
@@ -88,7 +94,7 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
 ```
 ![](../../images/lab02/matrix_transpose.png)
 ---
-### 2.Функция row_sums
+## 2.Функция row_sums
 Проверяется на прямоугольность матрицы. Далее создаю список размера входной матрицы. В цикле находим сумму каждой строки и добавляем ее в новый список.
 ```python
 def row_sums(mat: list[list[float | int]]) -> list[float]:
@@ -105,7 +111,7 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
 ```
 ![](../../images/lab02/matrix_rowsum.png)
 ---
-### 3.Функция col_sums
+## 3.Функция col_sums
 Проверяется на прямоугольность матрицы. Далее создаю список размера строки входной матрицы. В цикле находим сумму каждого столбца и добавляем ее в новый список.
 ```python
 def col_sums(mat: list[list[float | int]]) -> list[float]:
@@ -122,27 +128,27 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
 ```
 ![](../../images/lab02/matrix_colsum.png)
 ---
-## Задание 3-tuple
+### Задание 3-tuple
 Разбиваю кортеж на три переменные и удаляю лишние пробелы. Проверяется корректность записи ФИО, группы и GPA. Далле в завиимости от длины ФИО разбиваю на переменные и с помощью upper() создаю f строку.Возвращаю полностью f строку.
 ```python
 def format_record(rec: tuple[str, str, float]) -> str:
-    if rec!=tuple(rec):
+    if tuple!=type(rec):
         raise TypeError("Запись должна быть кортежом")
     if len(rec)!=3:
         raise ValueError("В записи должно быть 3 элемента")
     fio=rec[0].strip()
     group=rec[1].strip()
     gpa=rec[2]
-    if str(fio)!=fio:
+    if type(fio)!=str:
         raise TypeError("ФИО должно быть строкой")
     if len(fio.split())<2  or 3<len(fio.split()): 
         raise ValueError("Некорректное ФИО")
-    if str(group)!=group:
+    if type(group)!=str:
         raise TypeError("Группа должна быть строкой")
     if len(group.split())==0:
         raise ValueError("Группа пустая")
-    if gpa!=float(gpa):
-        raise  TypeError("GPA должно быть вещественным числом")
+    if type(gpa)!=float and type(gpa)!=int:
+        raise  TypeError("GPA должно быть числом")
     if  0>gpa or gpa>5:
         raise ValueError("Некорректное GPA")
     if len(fio.split())==3:
@@ -152,5 +158,7 @@ def format_record(rec: tuple[str, str, float]) -> str:
         s,n=fio.split()
         n_ot=f'{n[0]}.,'
     return f'{s[0].upper()}{s[1:]} {n_ot} гр. {group}, GPA {gpa:.2f}'
+
+
 ```
 ![](../../images/lab02/tuple.png)
