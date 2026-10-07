@@ -1,7 +1,7 @@
-## ЛР3 - Тексты и частоты слов (словарь/множество)
+# ЛР3 - Тексты и частоты слов (словарь/множество)
 ---
-### Задание A — src/lib/text.py
-# 1.Функция-normalize
+## Задание A — src/lib/text.py
+### 1.Функция-normalize
 Приводит текст в нижний регистр, заменяет ё на е, удаляет спец символы и лишние пробелы.
  ```python
 
@@ -20,7 +20,7 @@ def normalize(text: str, *, casefold: bool = True, yo2e: bool = True) -> str:
 ```
 ![](../../images/lab03/normalize.png)
 ---
-# 2.Функция-tokenize
+### 2.Функция-tokenize
 С помощью регулярного выражения разделяет текст на слова, сохраняя дефисы.
  ```python
 def tokenize(text: str) -> list[str]:
@@ -30,7 +30,7 @@ def tokenize(text: str) -> list[str]:
 ```
 ![](../../images/lab03/normalize.png)
 ---
-# 3.Функции-count_freq+top_n
+### 3.Функции-count_freq+top_n
 Count_freq считает сколько раз встретился токен. Top_n вывводит n частых слов,отсортированных при равенстве частот в алфавитном порядке.
 ```python
 def count_freq(tokens: list[str]) -> dict[str, int]:
@@ -43,9 +43,9 @@ def top_n(freq: dict[str, int], n: int = 5) -> list[tuple[str, int]]:
       return sorted(freq.items(),key=lambda x: (-x[1],x[0]))[:n]
 
 ```
-![](../../images/lab03/count_freq + top_n.png)
+![](../../images/lab03/count_freq+top_n.png)
 ---
-# Мини-тесты:
+### Мини-тесты:
 ```python
 
 if __name__=='__main__':
@@ -101,7 +101,10 @@ else:
         print(f'{t:<{mx}} | {c}')
 
 ```
-Обычный вывод:
+1. Обычный вывод:
+
 ![](../../images/lab03/text_starts.png)
-Табличный вывод:
+
+2. Табличный вывод:
+
 ![](../../images/lab03/text_starts2.png)
