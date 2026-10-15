@@ -29,7 +29,7 @@ def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...
     if len(rows)>0:
         l1=len(rows[0])
         for row in rows:
-            if len(row)!=len(rows):
+            if len(row)!=l1:
                 raise ValueError("Все строки должны иметь одиноковую длину")
         if header is not None and len(header)!=l1:
             raise ValueError("Длина заголовка должна совпадать с длиной строк")
