@@ -29,7 +29,7 @@ def ensure_parent_dir(path: str | Path):
     p.parent.mkdir(parents=True, exist_ok=True)
 ```
 Функция принимает на вход либо строку, либо объект(Path).".mkdir" создает папки ("make directory").
-parents=True - если родительской папки нет, то создает ее, exist_ok=True -  если папка существует не вызывать ошибку. Функция ничего не возвращает, она создает папки.
+parents=True - если родительской папки нет, то создает ее, exist_ok=True -  если папка существует, не вызывает ошибку. Функция ничего не возвращает, она создает папки.
 ### 3.write_csv()
 ```python
 
@@ -39,7 +39,7 @@ def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...
     if len(rows)>0:
         l1=len(rows[0])
         for row in rows:
-            if len(row)!=len(rows):
+            if len(row)!=l1:
                 raise ValueError("Все строки должны иметь одиноковую длину")
         if header is not None and len(header)!=l1:
             raise ValueError("Длина заголовка должна совпадать с длиной строк")
