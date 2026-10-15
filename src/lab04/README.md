@@ -61,7 +61,7 @@ if __name__ == "__main__":
     print(txt)
     write_csv([("word","count"),("test",3)], "data/lab04/check.csv")
 ```
-Вывод:
+
 ![](../../images/lab04/testA.png)
 ---
 ## Задание В
