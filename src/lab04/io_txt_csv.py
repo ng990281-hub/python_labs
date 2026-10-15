@@ -30,7 +30,7 @@ def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...
         l1=len(rows[0])
         for row in rows:
             if len(row)!=l1:
-                raise ValueError("Все строки должны иметь одиноковую длину")
+                raise ValueError("Все строки должны иметь одинаковую длину")
         if header is not None and len(header)!=l1:
             raise ValueError("Длина заголовка должна совпадать с длиной строк")
     ensure_parent_dir(path)
