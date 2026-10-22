@@ -49,13 +49,13 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
     jp=Path(json_path)
     cp=Path(csv_path)
     
-    if not jp.is_file():
-        raise FileNotFoundError(f"Файл не найден: {json_path}")
-    if jp.suffix.lower() != ".json":
-        raise ValueError("Входной файл должен иметь расширение .json")
-
+    if not cp.is_file():
+        raise FileNotFoundError(f"Файл не найден: {csv_path}")
     if cp.suffix.lower() != ".csv":
-        raise ValueError("Выходной файл должен иметь расширение .csv")
+        raise ValueError("Входной файл должен иметь расширение .csv")
+
+    if jp.suffix.lower() != ".json":
+        raise ValueError("Выходной файл должен иметь расширение .json")
     with cp.open("r", newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         if reader.fieldnames is None:
