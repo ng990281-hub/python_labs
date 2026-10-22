@@ -133,7 +133,7 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
         for i, value in enumerate(row, start=1):
             wid[i] = max(wid.get(i,0), len(value))
     for index, width in wid.items():
-        letter = get_column_letter(index + 1)
+        letter = get_column_letter(index)
         ws.column_dimensions[letter].width = max(8, width)
 
 
