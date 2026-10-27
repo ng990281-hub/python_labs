@@ -70,7 +70,6 @@ def main() -> None:
         parser.error(f"файл {args.input} не читается в кодировке UTF-8")
 ```
 Фунцкия вызывает в зависимости от команды функции cat и starts. 
----
 ### Тесты
 1.
 ```python
@@ -143,7 +142,7 @@ if __name__ == '__main__':
 
 ```
 Фунцкия с помощью argparse определяет три подкоманды (json2csv, csv2json и csv2xlsx). Каждая принимает два параметра:--in(входной файл) и --out(выходной файл). Затем в зависимости от команды программа вызывает функции из ЛР5.
----
+
 ### Тесты
 1.
 ```python
@@ -154,12 +153,12 @@ python -m src.lab06.cli_convert json2csv --in data/samples/people.json --out dat
 ```python
 python -m src.lab06.cli_convert csv2json --in data/samples/people.csv --out data/out/people_new.json
 ```
-![](../../images/lab06/conevrt2.png)
+![](../../images/lab06/convert2.png)
 3.
 ```python
 python -m src.lab06.cli_convert csv2xlsx --in data/samples/people.csv --out data/out/people.xlsx
 ```
-![](../../images/lab06/conevrt3.png)
+![](../../images/lab06/convert3.png)
 ---
 ### Проверки
 1.
