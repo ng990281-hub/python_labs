@@ -42,7 +42,7 @@ def selection_sort(nums):
         nums[i],nums[mn]=nums[mn],nums[i]
     return nums
 
-\
+
 
 
 
