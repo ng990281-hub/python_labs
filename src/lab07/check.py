@@ -14,7 +14,7 @@ def check_sorting(fn, trials=100):
         assert nums == original, f"{fn.__name__} изменила исходный список"
     return trials
 
-def check_search() -> int:
+def check_search():
     """
     Проверяет функции linear_search и binary_search на случайных данных.
     Возвращает количество успешно пройденных испытаний.
@@ -49,25 +49,26 @@ def check_search() -> int:
 
 def check_two_sum(trials=100):
     """Оба two_sum дают пару с нужной суммой или оба None."""
-    global checks
     for _ in range(trials):
         n = random.randint(0, 30)
         nums = [random.randint(-30, 30) for _ in range(n)]
         target = random.randint(-60, 60)
+
         a = two_sum_brute(nums, target)
         b = two_sum_fast(nums, target)
 
         if a is None:
-            assert a is None, f"перебор не нашёл, словарь нашёл {a} на {nums}, target={target}"
+            assert b is None, f"Перебор не нашёл, словарь нашёл {b}"
             continue
-        assert b is not None, f"перебор нашёл {b}, словарь нет, на {nums}, target={target}"
-        if a:
-            i, j = a
-            assert nums[i] + nums[j] == target, f"brute вернул неверные индексы: {a}"
-            i, j = b
-            assert nums[i] + nums[j] == target, f"fast вернул неверные индексы: {b}"
-    return trials 
 
+        assert b is not None, f"Перебор нашёл {a}, словарь не нашёл"
+
+        i, j = a
+        assert nums[i] + nums[j] == target, f"brute вернул неверные индексы: {a}"
+        i, j = b
+        assert nums[i] + nums[j] == target, f"fast вернул неверные индексы: {b}"
+
+    return trials
 
 if __name__ == "__main__":
     random.seed(42)
