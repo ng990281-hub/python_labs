@@ -108,15 +108,17 @@ def insertion_sort(nums):
 ### selection_sort()
 Функция на каждом шаге в ещё не отсортированной части  находит индекс минимального элемента и ставит его на текущую позицию.
 ``` python
-def two_sum_fast(nums, target):
-    """То же, что two_sum_brute, но за один проход со словарём."""
-    seen={}
-    for i,x in enumerate(nums):
-        need=target-x
-        if need in seen:
-            return (seen[need],i)
-        seen[x]=i
-    return None
+def selection_sort(nums):
+    """Тот же контракт, что у bubble_sort."""
+    nums=list(nums)
+    for i in range(len(nums)-1):
+        mn=i
+        for j in range(i+1,len(nums)):
+            if nums[j]<nums[mn]:
+                mn=j
+        nums[i],nums[mn]=nums[mn],nums[i]
+    return nums
+
 ```
 ## check()
 ### check_sorting()
@@ -172,24 +174,26 @@ def check_search():
 ``` python
 def check_two_sum(trials=100):
     """Оба two_sum дают пару с нужной суммой или оба None."""
-    global checks
     for _ in range(trials):
         n = random.randint(0, 30)
         nums = [random.randint(-30, 30) for _ in range(n)]
         target = random.randint(-60, 60)
+
         a = two_sum_brute(nums, target)
         b = two_sum_fast(nums, target)
 
         if a is None:
-            assert a is None, f"перебор не нашёл, словарь нашёл {a} на {nums}, target={target}"
+            assert b is None, f"Перебор не нашёл, словарь нашёл {b}"
             continue
-        assert b is not None, f"перебор нашёл {b}, словарь нет, на {nums}, target={target}"
-        if a:
-            i, j = a
-            assert nums[i] + nums[j] == target, f"brute вернул неверные индексы: {a}"
-            i, j = b
-            assert nums[i] + nums[j] == target, f"fast вернул неверные индексы: {b}"
-    return trials 
+
+        assert b is not None, f"Перебор нашёл {a}, словарь не нашёл"
+
+        i, j = a
+        assert nums[i] + nums[j] == target, f"brute вернул неверные индексы: {a}"
+        i, j = b
+        assert nums[i] + nums[j] == target, f"fast вернул неверные индексы: {b}"
+
+    return trials
 ```
 ### main()
 ```python
@@ -359,4 +363,4 @@ if __name__ == "__main__":
 ### Результат работы check.py
 ![](../../images/lab07/check.png)
 ### Результат бенчмарка
-![](../../images/lab07/brench.png)
+![](../../images/lab07/brench.pngg)
