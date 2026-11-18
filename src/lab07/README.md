@@ -363,4 +363,4 @@ if __name__ == "__main__":
 ### Результат работы check.py
 ![](../../images/lab07/check.png)
 ### Результат бенчмарка
-![](../../images/lab07/brench.pngg)
+![](../../images/lab07/brench.png)
