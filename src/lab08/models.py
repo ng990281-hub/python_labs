@@ -1,5 +1,5 @@
 from datetime import date
-from datetime import date
+
 STUDENT_FIELDS = ("fio", "birthdate", "group", "gpa")
 def make_student(fio, birthdate, group, gpa):
     if not fio.strip():
@@ -36,7 +36,7 @@ def make_student(fio, birthdate, group, gpa):
 
 
 def validate_student(rec):
-    # TODO: проверить набор ключей и каждое значение
+
     if not isinstance(rec,dict):
         raise ValueError("Запись должна юыть словарем")
     if set(rec) != set(STUDENT_FIELDS):
@@ -47,7 +47,7 @@ def validate_student(rec):
 
 
 def student_age(rec, today=None):
-    # TODO: учесть, был ли уже день рождения в этом году
+
     b = date.fromisoformat(rec["birthdate"])
     today = today or date.today()
     age = today.year - b.year
@@ -56,7 +56,7 @@ def student_age(rec, today=None):
     return age
 
 def format_student(rec):
-    # TODO: f"{}, {}, {}"
+
     validate_student(rec)
     fio, group, gpa = rec["fio"], rec["group"], rec["gpa"]
 
@@ -71,7 +71,7 @@ def format_student(rec):
 
 
 def student_to_dict(rec):
-    # TODO: проверить полноценность полей; вернуть копию, а не rec
+
     validate_student(rec)
     return {
         "fio": rec["birthdate"],
