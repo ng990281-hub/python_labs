@@ -3,32 +3,37 @@
  ### make_student
  Функция проверяет типы данных, существующую дату рождения, gpa между 0 и 5. Создает словарь, беря эти данные за ключи.
  ``` python
- def make_student(fio, birthdate, group, gpa):
+def make_student(fio, birthdate, group, gpa):
+
+    if not isinstance(fio, str):
+        raise ValueError("ФИО должно быть строкой")
     if not fio.strip():
         raise ValueError("ФИО не должно быть пустым")
-    if not isinstance(fio,str):
-        raise ValueError("ФИО должно быть строкой")
 
+    if not isinstance(group, str):
+        raise ValueError("Группа должна быть строкой")
     if not group.strip():
         raise ValueError("Группа не должна быть пустой")
-    if not isinstance(group,str):
-        raise ValueError("Группа должна быть строкой")
 
-    if not isinstance(birthdate,str):
+    if not isinstance(birthdate, str):
         raise ValueError("birthdate должно быть строкой в формате YYYY-MM-DD")
-    try:
-        d=date.fromisoformat(birthdate)
-    except:
-        raise ValueError("у birthdate неправильная дата или формат")
-    if d>date.today():
-        raise ValueError("День рождение не может быть в будущем")
 
-    if not isinstance(gpa,(float,int)) or isinstance(gpa,bool):
-        raise ValueError("GPA иммет некорректный тип данных")
-    
-    gpa=float(gpa)
+    try:
+        d = date.fromisoformat(birthdate)
+    except ValueError:
+        raise ValueError("У birthdate неправильная дата или формат")
+
+    if d > date.today():
+        raise ValueError("День рождения не может быть в будущем")
+
+    if not isinstance(gpa, (float, int)) or isinstance(gpa, bool):
+        raise ValueError("GPA имеет некорректный тип данных")
+
+    gpa = float(gpa)
+
     if not (0.0 <= gpa <= 5.0):
-        raise ValueError("gpa должен быть между 0 и 5")
+        raise ValueError("GPA должен быть между 0 и 5")
+
     return {
         "fio": fio.strip(),
         "birthdate": birthdate.strip(),
@@ -41,12 +46,14 @@
 ``` python 
 def validate_student(rec):
 
-    if not isinstance(rec,dict):
+    if not isinstance(rec, dict):
         raise ValueError("Запись должна быть словарем")
+
     if set(rec) != set(STUDENT_FIELDS):
         missing = set(STUDENT_FIELDS) - set(rec)
         extra = set(rec) - set(STUDENT_FIELDS)
-        raise ValueError(f"Неверный набор ключей: нет {missing}, лишние {extra}") 
+        raise ValueError(f"Неверный набор ключей: нет {missing}, лишние {extra}")
+
     make_student(rec["fio"], rec["birthdate"], rec["group"], rec["gpa"])
 ```
 ### student_age
@@ -82,34 +89,38 @@ def format_student(rec):
 Функция валидирут словарь и возвращает независимую копию.
 ``` python
 def student_to_dict(rec):
+
     validate_student(rec)
+
     return {
-        "fio": rec["birthdate"],
-        "birthdate": rec["group"],
-        "gpa": rec["fio"],
+        "fio": rec["fio"],
+        "birthdate": rec["birthdate"],
+        "group": rec["group"],
+        "gpa": rec["gpa"]
     }
 ```
 ### student_from_dict
 Фунцкия проверяет данные, приводит gpa к float и создает запись студента.
 ``` python 
 def student_from_dict(d):
-    if not isinstance(d,dict):
+
+    if not isinstance(d, dict):
         raise ValueError("Запись должна быть словарем")
+
     fio = d.get("fio")
     birthdate = d.get("birthdate")
     group = d.get("group")
     gpa = d.get("gpa")
 
-    if isinstance(gpa,bool):
+    if isinstance(gpa, bool):
         raise ValueError("GPA имеет неправильный тип данных")
+
     try:
-        gpa=float(gpa)
-    except (TypeError,ValueError):
+        gpa = float(gpa)
+    except (TypeError, ValueError):
         raise ValueError("GPA имеет недопустимый формат данных")
-    
-    d_new = make_student(d["fio"], d["birthdate"], d["group"], gpa)
-    validate_student(d_new)
-    return d_new
+
+    return make_student(fio, birthdate, group, gpa)
 ```
 ## Результат
 ``` python
