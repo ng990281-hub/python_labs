@@ -60,13 +60,26 @@ def validate_student(rec):
 Функция считает правильный возраст студента, учитывая было ли день рождение в этом году.
 ``` python
 def student_age(rec, today=None):
+    if not isinstance(rec["birthdate"], str):
+        raise TypeError("Birthdate должно быть строкой")
 
     b = date.fromisoformat(rec["birthdate"])
-    today = today or date.today()
+
+    if today is None:
+        today = date.today()
+    elif isinstance(today, str):
+        today = date.fromisoformat(today)
+
+    if not isinstance(today, date):
+        raise TypeError("Today должно быть датой")
+
     age = today.year - b.year
-    if (today.month, today.day)<(b.month, b.day):
-        age-=1
+
+    if (today.month, today.day) < (b.month, b.day):
+        age -= 1
+
     return age
+
 ```
 ### format_student
 Функция преобразует ФИО в фамилию с инициалами. Возвращает строку с данными студента.
